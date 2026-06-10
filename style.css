@@ -1,0 +1,648 @@
+/* -----------------------------------------
+    FOLIO - style.css
+    A portfolio site styled entirely from design tokens.
+    Section map:
+    1. Design tokens (:root)      6. Buttons
+    2. Dark mode overrides        7. Projects grid + cards
+    3. Reset + base               8. Skills / Contact / Footer
+    4. Navigation                 9. Back-to-top + reveal + responsive
+    5. Hero                           
+
+/* -----------------------------------------
+   DESIGN TOKENS & ROOT VARIABES (LIGHT MODE)
+   ----------------------------------------- */
+:root {
+    --primary: #5A8FB0;
+    --pri-high: #C76A55;
+    --pri-med: #C9A23A;
+    --pri-low: #7A9165;
+    --surface: #FCFAF3;
+    --card: #FFFFFF;
+    --border: #EFE9D8;
+    --ink: #1a1a1a;
+    --ink-muted: #6B6B6B;
+    --shadow: 0px 4px 12px rgba(25, 26, 25, 0.08);
+    --radius: 0.5rem;
+    --space: 1rem;
+}
+
+/* -----------------------------------------
+   DARK MODE TOKEN REDEFINITIONS
+   ----------------------------------------- */
+body.dark {
+    --primary: #8AB4F8;
+    --pri-high: #ADCCF9;
+    --pri-low: #303134;
+    --surface: #202124;
+    --card: #303134;
+    --border: #3C4043;
+    --text: #E8EAED;
+    --text-muted: #9AA0A6;
+    --shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* -----------------------------------------
+   GLOBAL RESET & BASE STYLES
+   ----------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--surface);
+    color: var(--INK);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+ul{
+    list-style: none;
+}
+/* -----------------------------------------
+   REUSABLE CONTAINER & STRUCTURAL UTILITIES
+   ----------------------------------------- */
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 calc(var(--space) * 1.5);
+}
+
+.sections {
+    padding: calc(var(--space) * 5) 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.section-alt{
+    background-color: var(--card);
+}
+
+.section-label {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: calc(var(--space) * 3);
+}
+
+/* -----------------------------------------
+   NAVIGATION STYLING
+   ----------------------------------------- */
+.nav {
+    position: sticky;
+    top: 0;
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.nav-inner {
+    height: 4.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--text);
+}
+
+.nav-links{
+    display: flex;
+    align-items: center;
+    gap: 1.5 rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-left: calc(var(--space) * 1.5);
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+#theme-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.5rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+#theme-toggle:hover {
+    background-color: var(--card);
+}
+
+/* -----------------------------------------
+   HERO HEADLINE STYLING
+   ----------------------------------------- */
+.hero {
+    padding: calc(var(--space) * 8) 0 calc(var(--space) * 6) 0;
+    background-color: var(--surface);
+    transition: background-color 0.3s ease;
+}
+
+.hero-tag {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.hero-name {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+}
+
+.hero-role {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+}
+
+.highlight {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--primary);
+    margin-bottom: calc(var(--space) * 1.5);
+}
+
+.hero-bio {
+    font-size: 1.2rem;
+    max-width: 800px;
+    color: var(--text-muted);
+    margin-bottom: calc(var(--space) * 3);
+}
+
+/* BUTTONS */
+.hero-ctas {
+    display: flex;
+    gap: var(--space);
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn:hover{
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--surface);
+}
+
+.btn-primary:hover {
+    background-color: var(--pri-high);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    background-color: var(--card);
+    transform: translateY(-2px);
+}
+
+/* -----------------------------------------
+   PROJECTS SECTION LAYOUT
+   ----------------------------------------- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: calc(var(--space) * 1.5);
+}
+
+.card {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: calc(var(--space) * 2);
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary);
+}
+
+.card-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.card-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.card-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: calc(var(--space) * 1.5);
+    flex-grow: 1;
+}
+
+.card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: calc(var(--space) * 1.5);
+}
+
+.chip {
+    font-size: 0.8rem;
+    font-weight: 500;
+    background-color: var(--pri-low);
+    color: var(--surface);
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+}
+
+body.dark .chip {
+    color: var(--text);
+}
+
+.card-link {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.card-link:hover {
+    text-decoration: underline;
+}
+
+/* -----------------------------------------
+   SKILLS SECTION LAYOUT
+   ----------------------------------------- */
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--space) * 1.25);
+    max-width: 650px;
+}
+
+.skill-head {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.skill-name {
+    color: var(--text);
+}
+
+.skill-pct {
+    color: var(--text-muted);
+}
+
+.skill-track {
+    background-color: var(--border);
+    height: 0.5rem;
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.skill-fill {
+    background-color: var(--primary);
+    height: 100%;
+    border-radius: 100px;
+}
+
+/* -----------------------------------------
+   CONTACT SECTION LAYOUT
+   ----------------------------------------- */
+.contact-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space);
+}
+
+.contact-link {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: calc(var(--space) * 1.5);
+    text-decoration: none;
+    color: var(--text);
+    display: block;
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.3s ease;
+}
+
+.contact-link:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary);
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.contact-type {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.contact-detail {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* -----------------------------------------
+   FOOTER SECTION
+   ----------------------------------------- */
+footer {
+    padding: calc(var(--space) * 3) 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    background-color: var(--surface);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* -----------------------------------------
+   BACK-TO-TOP + SCROLL REVEAL JAVASCRIPT ANIMATIONS
+   ----------------------------------------- */
+#back-to-top {
+    position: fixed;
+    bottom: calc(var(--space) * 2);
+    right: calc(var(--space) * 2);
+    background-color: var(--primary);
+    color: var(--surface);
+    border: none;
+    border-radius: 50%; /* Makes it a circular button */
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    z-index: 999; /* Ensures it sits above all other content */
+    
+    /* Animation settings for showing/hiding */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s, background-color 0.2s ease;
+}
+
+#back-to-top:hover {
+    background-color: var(--pri-high);
+    transform: translateY(-3px);
+}
+
+#back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* -----------------------------------------
+   BLOG SECTION LAYOUT (CSS GRID)
+   ----------------------------------------- */
+.blog-grid {
+    display: grid;
+    /* Automatically creates columns that wrap neatly down on smaller devices */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: calc(var(--space) * 1.5);
+}
+
+.blog-card {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: calc(var(--space) * 1.75);
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary);
+}
+
+.blog-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.blog-date {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.blog-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+}
+
+/* Enforces exactly a 2-line text truncation limitation */
+.blog-excerpt {
+    font-size: 0.95rem;
+    color: var(--ink-muted);
+    margin-bottom: calc(var(--space) * 1.5);
+    flex-grow: 1;
+    
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-clamp:2;
+}
+
+.blog-link {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+    align-self: flex-start; /* Keeps the click target wrapped tight around the link string */
+    transition: color 0.2s ease;
+}
+
+.blog-link:hover {
+    text-decoration: underline;
+    color: var(--pri-high);
+}
+
+/* -----------------------------------------
+   INTERACTIVE FIGMA EMBED CONTAINER
+   ----------------------------------------- */
+/* Forces the Figma card to stretch over 2 columns on wide screens if desired */
+@media (min-width: 768px) {
+    .figma-embed-card {
+        grid-column: span 2;
+    }
+}
+
+/* Aspect Ratio responsive wrapper box */
+.figma-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* Fixed 16:9 widescreen layout standard */
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: calc(var(--space) * 1.5);
+    box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Force the iframe to scale completely inside the relative container box bounds */
+.figma-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+}
+
+/* -----------------------------------------
+   FILTERABLE PROJECT GALLERY LAYOUT
+   ----------------------------------------- */
+.filter-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space);
+    margin-bottom: calc(var(--space) * 2);
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.filter-btn {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--radius);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.filter-btn:hover {
+    border-color: var(--primary);
+    color: var(--text);
+}
+
+/* Style for the active filter button state */
+.filter-btn.active {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--surface);
+}
+
+body.dark .filter-btn.active {
+    color: #202124; /* Clean contrast for active state text in dark mode */
+}
+
+.project-count {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+/* Smooth Fade Filtering System Transitions */
+.gallery-item {
+    transition: opacity 0.4s ease, transform 0.4s ease, background-color 0.3s ease, border-color 0.2s ease;
+}
+
+/* Class added via JS to smoothly pull filtered cards out of view layout */
+.gallery-item.hide-item {
+    opacity: 0;
+    transform: scale(0.95);
+    position: absolute;
+    overflow: hidden;
+    pointer-events: none;
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
