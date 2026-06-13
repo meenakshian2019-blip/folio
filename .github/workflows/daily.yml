@@ -2,9 +2,9 @@ name: Pulse - Daily Summary Bot
 
 on:
   schedule:
-    # 2:30 AM UTC = 8:00 AM IST
-    - cron: "30 2 * * *"
-  workflow_dispatch: # Allows manual trigger execution anytime
+    # 1:30 AM UTC hits exactly at 7:00 AM IST daily
+    - cron: "30 1 * * *"
+  workflow_dispatch: # Keeps manual execution button available in the UI
 
 jobs:
   run-pulse:
@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run Pulse bot with Injected Task 1 Secrets
+      - name: Run Pulse bot with Injected Secrets
         env:
           OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
