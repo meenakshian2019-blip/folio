@@ -127,3 +127,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize display layout count upon fresh browser load bindings
     updateProjectCount();
+
+// Dynamic portfolio catalog injection loop module
+async function renderGitHubProjects() {
+    const sectionContainer = document.querySelector(".projects-grid"); // Match your HTML catalog parent ID node
+    if(!sectionContainer) return;
+
+    try {
+        const response = await fetch("projects.json");
+        const projects = await response.json();
+        
+        sectionContainer.innerHTML = ""; // Wipe default placeholders clean
+        
+        projects.forEach(project => {
+            const card = document.createElement("div");
+            card.className = "project-card"; // Match your custom styling grid class selectors
+            card.innerHTML = `
+                <h3>${project.name}</h3>
+                <p>${project.description}</p>
+                <div class="meta-metrics">
+                    <span>Codebase: <strong>${project.language}</strong></span>
+                    <span>⭐ ${project.stars}</span>
+                </div>
+                <a href="${project.html_url}" target="_blank" class="repo-link">Explore Codebase</a>
+            `;
+            sectionContainer.appendChild(card);
+        });
+    } catch (error) {
+        console.error("Error loading dynamically generated repository catalog grid:", error);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", renderGitHubProjects);   

@@ -1,3 +1,3 @@
 Pulse Digest Run: Saturday, June 13, 2026
-Weather: 29.23°C, Overcast Clouds
-Quote: "If you want more luck, take more chances." — Brian Tracy
+Weather: Weather unavailable (Missing API Key)
+Quote: "A mountain never yields to the wind no matter how strong it is." — Zen Proverb

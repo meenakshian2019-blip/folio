@@ -1,35 +1,54 @@
-name: Pulse - Daily Summary Bot
+name: Pulse - Multi-Task Automation Suite
 
 on:
   schedule:
-    # 1:30 AM UTC hits exactly at 7:00 AM IST daily
+    # 1:30 AM UTC hits at 7:00 AM IST daily
     - cron: "30 1 * * *"
-  workflow_dispatch: # Keeps manual execution button available in the UI
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+# Grant authorization to write changes back into your website repository branch structure
+permissions:
+  contents: write
 
 jobs:
-  run-pulse:
+  run-automation:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout repository files
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
-      - name: Set up Python
+      - name: Initialize Python Environment
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Install execution requirements
         run: pip install -r requirements.txt
 
-      - name: Run Pulse bot with Injected Secrets
+      - name: Execute Pulse Engine Processing Routine
         env:
           OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
           SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+          PORTFOLIO_SYNC_TOKEN: ${{ secrets.PORTFOLIO_SYNC_TOKEN }}
         run: python bot.py
 
-      - name: Upload summary as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: daily-summary
-          path: daily_summary.txt
+      - name: Check for mutations inside the workspace
+        id: git-check
+        run: |
+          git diff --quiet || echo "mutations_detected=true" >> $GITHUB_OUTPUT
+
+      - name: Deploy compiled metadata changes to codebase repository
+        if: steps.git-check.outputs.mutations_detected == 'true'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add projects.json
+          git commit -m "automation-bot: dynamically synced portfolio project matrix [skip ci]"
+          git push origin HEAD
