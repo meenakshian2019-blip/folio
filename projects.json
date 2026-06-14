@@ -1,5 +1,21 @@
 [
     {
+        "name": "Design Portfolio",
+        "description": "An automated project artifact created inside my developer workflow environment.",
+        "html_url": "https://github.com/meenakshian2019-blip/design-portfolio",
+        "language": "JavaScript",
+        "stars": 0,
+        "updated_at": "2026-06-13"
+    },
+    {
+        "name": "Amazon Clone",
+        "description": "An automated project artifact created inside my developer workflow environment.",
+        "html_url": "https://github.com/meenakshian2019-blip/amazon-clone",
+        "language": "JavaScript",
+        "stars": 1,
+        "updated_at": "2026-06-13"
+    },
+    {
         "name": "Folio",
         "description": "An automated project artifact created inside my developer workflow environment.",
         "html_url": "https://github.com/meenakshian2019-blip/folio",
