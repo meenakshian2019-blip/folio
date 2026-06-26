@@ -1,17 +1,17 @@
 [
     {
-        "name": "Tide  Taskmanagerapp",
-        "description": "An automated project artifact created inside my developer workflow environment.",
-        "html_url": "https://github.com/meenakshian2019-blip/Tide--taskmanagerapp",
-        "language": "Python",
-        "stars": 0,
-        "updated_at": "2026-06-24"
-    },
-    {
         "name": "Folio",
         "description": "An automated project artifact created inside my developer workflow environment.",
         "html_url": "https://github.com/meenakshian2019-blip/folio",
         "language": "CSS",
+        "stars": 0,
+        "updated_at": "2026-06-25"
+    },
+    {
+        "name": "Tide  Taskmanagerapp",
+        "description": "An automated project artifact created inside my developer workflow environment.",
+        "html_url": "https://github.com/meenakshian2019-blip/Tide--taskmanagerapp",
+        "language": "Python",
         "stars": 0,
         "updated_at": "2026-06-24"
     },
