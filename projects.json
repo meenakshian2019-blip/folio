@@ -1,11 +1,19 @@
 [
     {
+        "name": "Design Portfolio",
+        "description": "An automated project artifact created inside my developer workflow environment.",
+        "html_url": "https://github.com/meenakshian2019-blip/design-portfolio",
+        "language": "JavaScript",
+        "stars": 0,
+        "updated_at": "2026-07-03"
+    },
+    {
         "name": "Folio",
         "description": "An automated project artifact created inside my developer workflow environment.",
         "html_url": "https://github.com/meenakshian2019-blip/folio",
         "language": "CSS",
         "stars": 0,
-        "updated_at": "2026-07-02"
+        "updated_at": "2026-07-03"
     },
     {
         "name": "Tide  Taskmanagerapp",
@@ -14,14 +22,6 @@
         "language": "Python",
         "stars": 0,
         "updated_at": "2026-06-24"
-    },
-    {
-        "name": "Design Portfolio",
-        "description": "An automated project artifact created inside my developer workflow environment.",
-        "html_url": "https://github.com/meenakshian2019-blip/design-portfolio",
-        "language": "JavaScript",
-        "stars": 0,
-        "updated_at": "2026-06-13"
     },
     {
         "name": "Amazon Clone",
